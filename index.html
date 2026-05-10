@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe - Genaro Rojas Buleje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos específicos para replicar una hoja A4 y configurar la impresión */
+        body {
+            background-color: #e5e7eb;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Centrar el documento en la pantalla */
+        }
+        
+        /* Contenedor para aplicar el escalado del 90% sin afectar la impresión */
+        .scale-container {
+            transform: scale(0.9);
+            transform-origin: top center;
+            margin-bottom: -10%; /* Compensar el espacio reducido por el escalado */
+        }
+
+        .a4-paper {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm 20mm;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Indicadores visuales para campos editables */
+        [contenteditable="true"] {
+            outline: none;
+            transition: background-color 0.2s;
+            border-bottom: 1px dashed transparent;
+            color: #000; /* Forzar color negro */
+        }
+        [contenteditable="true"]:hover, [contenteditable="true"]:focus {
+            background-color: #fef3c7;
+            border-bottom: 1px dashed #fbbf24;
+        }
+
+        /* Estilo para los placeholders personalizados */
+        .placeholder-text-custom {
+            color: #9ca3af; /* Gris claro para el placeholder */
+        }
+
+        /* Ocultar elementos de la interfaz al imprimir */
+        @media print {
+            body { 
+                background-color: white; 
+                padding: 0; 
+                display: block;
+            }
+            .scale-container {
+                transform: none; /* Quitar el escalado al imprimir */
+                margin-bottom: 0;
+            }
+            .a4-paper {
+                box-shadow: none; 
+                width: 100%; 
+                min-height: auto;
+                padding: 20mm; 
+                margin: 0;
+            }
+            .no-print { display: none !important; }
+            [contenteditable="true"]:hover, [contenteditable="true"]:focus {
+                background-color: transparent; 
+                border-bottom: 1px dashed transparent;
+            }
+            /* Si al imprimir queda texto de placeholder, ponerlo blanco o transparente (opcional) */
+            .placeholder-text-custom {
+                color: transparent !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="window.print()" class="no-print fixed top-6 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded shadow-lg flex items-center gap-2 z-50 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        Guardar como PDF
+    </button>
+
+    <div class="scale-container">
+        <div class="a4-paper">
+            
+            <!-- Encabezado con logo independiente y texto centrado en 2 líneas -->
+            <div class="relative mb-10 min-h-[80px] flex justify-center items-start pt-2">
+                <!-- Logo alineado a la izquierda sin afectar el texto -->
+                <div class="absolute left-0 top-0 h-24 w-32 flex items-center justify-start">
+                    <img src="https://i.postimg.cc/gkQp6WBB/Screenshot-2026-05-08-102150.png" alt="Logo" class="max-w-full max-h-full object-contain">
+                </div>
+
+                <!-- Texto forzado a dos líneas con whitespace-nowrap -->
+                <div class="text-center font-normal text-[14.5px] leading-snug pt-4">
+                    <p class="whitespace-nowrap">“Decenio de la Igualdad de Oportunidades para la Mujer y el Hombre”</p>
+                    <p class="whitespace-nowrap mt-1">“Año de la Esperanza y el Fortalecimiento de la Democracia”</p>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <p class="font-bold underline text-[15px]">INFORME N° <span contenteditable="true" class="editable-field placeholder-text-custom" data-placeholder="[NÚMERO]">[NÚMERO]</span> -2026 -MDS-GSC-SSC-GRB</p>
+            </div>
+
+            <table class="w-full text-[14.5px] mb-2 border-collapse">
+                <tbody>
+                    <tr>
+                        <td class="font-bold w-32 align-top pb-4">PARA</td>
+                        <td class="font-bold w-6 align-top pb-4">:</td>
+                        <td class="align-top pb-4 leading-tight">
+                            <span contenteditable="true" class="editable-field font-bold inline-block min-w-[200px] placeholder-text-custom" data-placeholder="[NOMBRE DEL DESTINATARIO]">[NOMBRE DEL DESTINATARIO]</span><br>
+                            <span class="font-bold">JEFE ZONAL</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold w-32 align-top pb-4">DE</td>
+                        <td class="font-bold w-6 align-top pb-4">:</td>
+                        <td class="align-top pb-4 leading-tight">
+                            <span class="font-bold">GENARO ROJAS BULEJE</span><br>
+                            <span>SUPERVISOR DE SERENAZGO</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold w-32 align-top pb-4">ASUNTO</td>
+                        <td class="font-bold w-6 align-top pb-4">:</td>
+                        <td class="align-top pb-4 font-bold">
+                            <span contenteditable="true" class="editable-field inline-block min-w-[300px] placeholder-text-custom" data-placeholder="[ESCRIBIR EL ASUNTO AQUÍ]">[ESCRIBIR EL ASUNTO AQUÍ]</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold w-32 align-top pb-4">FECHA</td>
+                        <td class="font-bold w-6 align-top pb-4">:</td>
+                        <td class="align-top pb-4">
+                            Surquillo, <span contenteditable="true" class="editable-field inline-block min-w-[150px] placeholder-text-custom" data-placeholder="[FECHA AQUÍ]">[FECHA AQUÍ]</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="w-full border-t border-black mb-8"></div>
+
+            <div contenteditable="true" class="editable-field text-[14.5px] text-justify leading-relaxed min-h-[250px] placeholder-text-custom" data-placeholder="[AQUÍ IRÁ EL CUERPO DEL INFORME. ESCRIBE LOS DETALLES AQUÍ.]">
+                [AQUÍ IRÁ EL CUERPO DEL INFORME. ESCRIBE LOS DETALLES AQUÍ.]
+            </div>
+
+            <div class="text-[14.5px] mt-4 mb-4">
+                Atentamente,
+            </div>
+
+            <div class="flex justify-center">
+                <div class="text-center">
+                    <img src="https://i.postimg.cc/bN2MW23Z/Screenshot-2026-05-08-102243.png" alt="Firma" class="max-h-[100px] max-w-[200px] object-contain" style="mix-blend-mode: multiply;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Lógica para manejar los placeholders al hacer clic
+        const editableFields = document.querySelectorAll('.editable-field');
+
+        editableFields.forEach(field => {
+            field.addEventListener('focus', function() {
+                if (this.textContent.trim() === this.getAttribute('data-placeholder')) {
+                    this.textContent = '';
+                    this.classList.remove('placeholder-text-custom');
+                }
+            });
+
+            field.addEventListener('blur', function() {
+                if (this.textContent.trim() === '') {
+                    this.textContent = this.getAttribute('data-placeholder');
+                    this.classList.add('placeholder-text-custom');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

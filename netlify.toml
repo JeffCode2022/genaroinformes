@@ -1,0 +1,20 @@
+# Netlify configuration
+
+# Build configuration (no build needed for this project)
+[build]
+  command = "echo 'No build required'"
+  publish = "."
+
+# Headers configuration
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Redirects configuration
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
